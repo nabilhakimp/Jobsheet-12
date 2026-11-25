@@ -1,24 +1,27 @@
-import java.util.Scanner;
-
 public class HitungBalok19 {
+    static int hitungLuas(int a, int b) {
+        return a * b;
+    }
+
+    static int hitungLuasPermukaanBalok(int p, int l, int t) {
+        return 2 * (hitungLuas(p, l) + hitungLuas(p, t) + hitungLuas(l, t));
+    }
+
+    static int hitungVolume(int p, int l, int t) {
+        return p * l * t;
+    }
+
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        int p, l, t, L, vol;
+        int[][] balok = {{4, 3, 5}, {2, 2, 2}, {6, 4, 3}};
 
-        System.out.println("Masukkan panjang");
-        p = input.nextInt();
+        for (int i = 0; i < balok.length; i++) {
+            int p = balok[i][0];
+            int l = balok[i][1];
+            int t = balok[i][2];
 
-        System.out.println("Masukkan lebar");
-        l = input.nextInt();
-
-        System.out.println("Masukkan tinggi");
-        t = input.nextInt();
-
-        L = p * l;
-        System.out.println("Luas persegi panjang adalah " + L);
-        vol = p * l * t;
-        System.out.println("Volume balok adalah " + vol);
-
-        input.close();
+            System.out.println("Balok " + (i + 1) + " (" + p + " x " + l + " x " + t + ")");
+            System.out.println("  Luas permukaan : " + hitungLuasPermukaanBalok(p, l, t));
+            System.out.println("  Volume         : " + hitungVolume(p, l, t));
+        }
     }
 }
