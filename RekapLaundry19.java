@@ -85,10 +85,29 @@ public class RekapLaundry19 {
     }
 
     public static void main(String[] args) {
-        String[] layanan = {"Cuci Kering", "Cuci Setrika", "Setrika Saja", "Express"};
-        int[] harga = {6000, 8000, 5000, 12000};
-        String[] hari = {"Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"};
-        int[][] data = new int[layanan.length][hari.length];
+        System.out.print("Jumlah layanan: ");
+        int jumlahLayanan = input.nextInt();
+        System.out.print("Jumlah hari: ");
+        int jumlahHari = input.nextInt();
+        input.nextLine();   // membuang sisa Enter agar nextLine() berikutnya tidak kosong
+
+        // ukuran array mengikuti input pengguna
+        String[] layanan = new String[jumlahLayanan];
+        int[] harga = new int[jumlahLayanan];
+        String[] hari = new String[jumlahHari];
+        int[][] data = new int[jumlahLayanan][jumlahHari];
+
+        for (int i = 0; i < jumlahLayanan; i++) {
+            System.out.print("Nama layanan ke-" + (i + 1) + ": ");
+            layanan[i] = input.nextLine();
+            System.out.print("Harga per kg layanan ke-" + (i + 1) + ": ");
+            harga[i] = input.nextInt();
+            input.nextLine();
+        }
+
+        for (int j = 0; j < jumlahHari; j++) {
+            hari[j] = "Hari ke-" + (j + 1);
+        }
 
         inputData(data, layanan, hari);
 
